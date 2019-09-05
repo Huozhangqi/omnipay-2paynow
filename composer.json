@@ -1,0 +1,24 @@
+{
+    "name": "hoesca/omnipay-2paynow",
+    "description": "2paynow driver for the Omnipay PHP payment processing library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "HuoZhangqi",
+            "email": "h947136@qq.com"
+        }
+    ],
+    "require": {
+        "php": "^7.1",
+        "ext-json": "*",
+        "league/omnipay": "^3",
+        "nesbot/carbon": "2.*",
+        "phpunit/phpunit": "^8.3",
+        "mockery/mockery": "^1.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Omnipay\\TwoPayNow\\": "./src/"
+        }
+    }
+}
