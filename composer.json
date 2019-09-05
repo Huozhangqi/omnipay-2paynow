@@ -1,7 +1,20 @@
 {
-    "name": "hoesca/omnipay-2paynow",
-    "description": "2paynow driver for the Omnipay PHP payment processing library",
+    "name": "huozhangqi/omnipay-2paynow",
+    "description": "2paynow gateway for Omnipay payment processing library",
     "license": "MIT",
+    "type": "library",
+    "keywords": [
+        "2paynow",
+        "twopaynow",
+        "gateway",
+        "php",
+        "omnipay",
+        "pay",
+        "sdk",
+        "app",
+        "payment",
+        "purchase"
+    ],
     "authors": [
         {
             "name": "HuoZhangqi",
@@ -11,10 +24,10 @@
     "require": {
         "php": "^7.1",
         "ext-json": "*",
-        "league/omnipay": "^3",
-        "nesbot/carbon": "2.*",
-        "phpunit/phpunit": "^8.3",
-        "mockery/mockery": "^1.2"
+        "omnipay/common": "^3"
+    },
+    "require-dev": {
+        "omnipay/tests": "^3"
     },
     "autoload": {
         "psr-4": {
