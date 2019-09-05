@@ -6,7 +6,7 @@
 ## Installing
 
 ```shell
-$ composer require huozhangqi/2paynow
+$ composer require huozhangqi/omnipay-2paynow
 ```
 
 ## Usage
