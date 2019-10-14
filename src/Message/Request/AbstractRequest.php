@@ -159,6 +159,16 @@ abstract class AbstractRequest extends CommonAbstractRequest
         return $this->setParameter('platform', $value);
     }
 
+    public function setMerchantTradeNo($value)
+    {
+        return $this->setParameter('merchantTradeNo', $value);
+    }
+
+    public function getMerchantTradeNo()
+    {
+        return $this->getParameter('merchantTradeNo');
+    }
+
     /**
      * @return string
      * @throws InvalidRequestException
@@ -167,14 +177,15 @@ abstract class AbstractRequest extends CommonAbstractRequest
     {
         $this->validate('platform');
 
-        switch ($this->getPlatform()) {
-            case 'web':
-                return 'https://www.2paynow.com/zhifu/mc_itf';
-            case 'wap':
-                return 'http://www.2paynow.com/wap/WxpayAPI/jsapi.php';
+        //wap端, 微信和支付宝
+        if ($this->getPlatform() === 'wap' && $this->getType() === 1) {
+            //weChat
+            return 'http://www.2paynow.com/wap/WxpayAPI/jsapi.php';
+        } else {
+            //Web
+            return 'https://www.2paynow.com/zhifu/mc_itf';
         }
 
-        throw new InvalidRequestException('Invalid platform selected, only \'web\' or \'wap\' can be used');
     }
 
     abstract public function createResponse($data);

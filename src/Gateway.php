@@ -3,7 +3,9 @@
 namespace Omnipay\TwoPayNow;
 
 use Omnipay\Common\AbstractGateway;
+use Omnipay\TwoPayNow\Message\Request\QueryRequest;
 use Omnipay\TwoPayNow\Message\Request\CancelRequest;
+use Omnipay\TwoPayNow\Message\Request\CompleteRequest;
 use Omnipay\TwoPayNow\Message\Request\PreCreateRequest;
 
 class Gateway extends AbstractGateway
@@ -168,13 +170,73 @@ class Gateway extends AbstractGateway
         return $this->getParameter('tradeNo');
     }
 
+    public function setMerchantTradeNo($value)
+    {
+        return $this->setParameter('merchantTradeNo', $value);
+    }
+
+    public function getMerchantTradeNo()
+    {
+        return $this->getParameter('merchantTradeNo');
+    }
+
+    public function setReturnUrl($value)
+    {
+        return $this->setParameter('returnUrl', $value);
+    }
+
+    public function getReturnUrl()
+    {
+        return $this->getParameter('returnUrl');
+    }
+
+    /**
+     * Create Payment Request
+     * @param array $parameters
+     * @return \Omnipay\Common\Message\AbstractRequest
+     */
     public function preCreate(array $parameters = [])
     {
         return $this->createRequest(PreCreateRequest::class, $parameters);
     }
 
+    ///*
+    // * Create Payment Request From Wap Devices
+    // * @param array $parameters
+    // * @return \Omnipay\Common\Message\AbstractRequest
+    // */
+    //public function wapPreCreate(array $parameters = [])
+    //{
+    //
+    //}
+
+    /**
+     * Cancel Order
+     * @param array $parameters
+     * @return \Omnipay\Common\Message\AbstractRequest
+     */
     public function cancel(array $parameters = [])
     {
         return $this->createRequest(CancelRequest::class, $parameters);
+    }
+
+    /**
+     * Query Payment Status
+     * @param array $parameters
+     * @return \Omnipay\Common\Message\AbstractRequest
+     */
+    public function query(array $parameters = [])
+    {
+        return $this->createRequest(QueryRequest::class, $parameters);
+    }
+
+    /**
+     * Complete Payment Callback
+     * @param array $parameters
+     * @return \Omnipay\Common\Message\AbstractRequest
+     */
+    public function complete(array $parameters = [])
+    {
+        return $this->createRequest(CompleteRequest::class, $parameters);
     }
 }

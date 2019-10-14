@@ -35,5 +35,13 @@ class CancelRequest extends AbstractRequest
 
         return $data;
     }
+
+    /**
+     * @return string
+     */
+    public function getEndpoint()
+    {
+        return 'https://www.2paynow.com/zhifu/mc_itf';
+    }
 }
 
