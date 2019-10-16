@@ -1,13 +1,18 @@
 <?php
-/**
- * @Author: h9471
- * @Created: 2019/9/4 16:20
+
+/*
+ * This file is part of the huozhangqi/omnipay-2paynow.
+ *
+ * (c) HuoZhangqi <h947136@qq.com>
+ *
+ * This source file is subject to the MIT license that is bundled.
  */
+
 namespace Omnipay\TwoPayNow\Tests;
 
+use Omnipay\Common\Exception\InvalidRequestException;
 use Omnipay\Omnipay;
 use PHPUnit\Framework\TestCase;
-use Omnipay\Common\Exception\InvalidRequestException;
 
 class TwoPayNowTest extends TestCase
 {
@@ -21,7 +26,6 @@ class TwoPayNowTest extends TestCase
         parent::setUp();
 
         $this->gateway = Omnipay::create('TwoPayNow');
-
     }
 
     /**
@@ -43,7 +47,7 @@ class TwoPayNowTest extends TestCase
 
         $this->assertFalse($response->isSuccessful());
         $this->assertFalse($response->isRedirect());
-        $this->assertEquals(403, $response->getCode());
+        $this->assertSame(403, $response->getCode());
         $this->assertSame('mid not exist', $response->getErrorInfo());
     }
 
@@ -60,7 +64,7 @@ class TwoPayNowTest extends TestCase
 
         $this->assertFalse($response->isSuccessful());
         $this->assertFalse($response->isCancelled());
-        $this->assertEquals(403, $response->getCode());
+        $this->assertSame(403, $response->getCode());
         $this->assertSame('mid not exist', $response->getErrorInfo());
     }
 
@@ -96,9 +100,9 @@ class TwoPayNowTest extends TestCase
             ['request_params' => $params]
         )->send();
 
-        $this->assertEquals($response->isPaid(), true);
-        $this->assertEquals($response->isSuccessful(), true);
-        $this->assertEquals($response->getAmount(), 0.01);
+        $this->assertSame($response->isPaid(), true);
+        $this->assertSame($response->isSuccessful(), true);
+        $this->assertSame($response->getAmount(), 0.01);
     }
 
     /**
@@ -113,4 +117,3 @@ class TwoPayNowTest extends TestCase
         ];
     }
 }
-

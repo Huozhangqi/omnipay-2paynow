@@ -1,12 +1,20 @@
 <?php
 
+/*
+ * This file is part of the huozhangqi/omnipay-2paynow.
+ *
+ * (c) HuoZhangqi <h947136@qq.com>
+ *
+ * This source file is subject to the MIT license that is bundled.
+ */
+
 namespace Omnipay\TwoPayNow;
 
 use Omnipay\Common\AbstractGateway;
-use Omnipay\TwoPayNow\Message\Request\QueryRequest;
 use Omnipay\TwoPayNow\Message\Request\CancelRequest;
 use Omnipay\TwoPayNow\Message\Request\CompleteRequest;
 use Omnipay\TwoPayNow\Message\Request\PreCreateRequest;
+use Omnipay\TwoPayNow\Message\Request\QueryRequest;
 
 class Gateway extends AbstractGateway
 {

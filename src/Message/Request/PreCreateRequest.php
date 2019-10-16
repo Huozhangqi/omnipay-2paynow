@@ -1,12 +1,19 @@
 <?php
 
+/*
+ * This file is part of the huozhangqi/omnipay-2paynow.
+ *
+ * (c) HuoZhangqi <h947136@qq.com>
+ *
+ * This source file is subject to the MIT license that is bundled.
+ */
+
 namespace Omnipay\TwoPayNow\Message\Request;
 
 use Omnipay\TwoPayNow\Message\Response\PreCreateResponse;
 
 class PreCreateRequest extends AbstractRequest
 {
-
     public function createResponse($data)
     {
         return new PreCreateResponse($this, $data);
@@ -42,4 +49,3 @@ class PreCreateRequest extends AbstractRequest
         return $data;
     }
 }
-

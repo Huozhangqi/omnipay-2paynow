@@ -1,6 +1,6 @@
 <?php
 $header = <<<EOF
-This file is part of the omnipay/pay-2paynow.
+This file is part of the huozhangqi/omnipay-2paynow.
 
 (c) HuoZhangqi <h947136@qq.com>
 
@@ -10,7 +10,7 @@ EOF;
 return PhpCsFixer\Config::create()
     ->setRiskyAllowed(true)
     ->setRules(array(
-        '@Y' => true,
+        '@PSR2'         => true,
         'header_comment' => array('header' => $header),
         'array_syntax' => array('syntax' => 'short'),
         'ordered_imports' => true,

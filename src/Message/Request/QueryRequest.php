@@ -10,13 +10,13 @@
 
 namespace Omnipay\TwoPayNow\Message\Request;
 
-use Omnipay\TwoPayNow\Message\Response\CancelResponse;
+use Omnipay\TwoPayNow\Message\Response\QueryResponse;
 
-class CancelRequest extends AbstractRequest
+class QueryRequest extends AbstractRequest
 {
     public function createResponse($data)
     {
-        return new CancelResponse($this, $data);
+        return new QueryResponse($this, $data);
     }
 
     /**
@@ -28,26 +28,18 @@ class CancelRequest extends AbstractRequest
      */
     public function getData()
     {
-        $this->makeSign('cancel');
+        $this->makeSign('query');
 
-        $this->validate('sign', 'key', 'tradeNo', 'merchantId');
+        $this->validate('merchantId', 'sign', 'tradeNo', 'key');
 
         $data =  http_build_query([
-            'trade_no'              =>      $this->getTradeNo(),
-            'function'              =>      'cancel',
-            'sign'                  =>      $this->getSign(),
+            'function'              =>      'query',
             'mid'                   =>      $this->getMerchantId(),
             'timestamp'             =>      $this->getTimestamp(),
+            'sign'                  =>      $this->getSign(),
+            'trade_no'              =>      $this->getTradeNo(),
         ]);
 
         return $data;
-    }
-
-    /**
-     * @return string
-     */
-    public function getEndpoint()
-    {
-        return 'https://www.2paynow.com/zhifu/mc_itf';
     }
 }

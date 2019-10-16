@@ -1,5 +1,13 @@
 <?php
 
+/*
+ * This file is part of the huozhangqi/omnipay-2paynow.
+ *
+ * (c) HuoZhangqi <h947136@qq.com>
+ *
+ * This source file is subject to the MIT license that is bundled.
+ */
+
 namespace Omnipay\TwoPayNow\Message\Request;
 
 use Omnipay\Common\Exception\InvalidRequestException;
@@ -146,7 +154,7 @@ abstract class AbstractRequest extends CommonAbstractRequest
 
     protected function makeSign($function)
     {
-        return $this->setSign(md5( $function . $this->getMerchantId() . $this->getTimestamp() . $this->getKey()));
+        return $this->setSign(md5($function . $this->getMerchantId() . $this->getTimestamp() . $this->getKey()));
     }
 
     public function getPlatform()
@@ -181,11 +189,9 @@ abstract class AbstractRequest extends CommonAbstractRequest
         if ($this->getPlatform() === 'wap' && $this->getType() === 1) {
             //weChat
             return 'http://www.2paynow.com/wap/WxpayAPI/jsapi.php';
-        } else {
-            //Web
-            return 'https://www.2paynow.com/zhifu/mc_itf';
         }
-
+        //Web
+        return 'https://www.2paynow.com/zhifu/mc_itf';
     }
 
     abstract public function createResponse($data);
