@@ -28,12 +28,14 @@ class QueryRequest extends AbstractRequest
      */
     public function getData()
     {
-        $this->makeSign('query');
+        $this->makeSign($this->isWap() ? 'wap_query' : 'query');
+
+        $this->isWap() ? $this->setTradeNo($this->getMerchantTradeNo()) : $this->getTradeNo();
 
         $this->validate('merchantId', 'sign', 'tradeNo', 'key');
 
         $data =  http_build_query([
-            'function'              =>      'query',
+            'function'              =>      $this->isWap() ? 'wap_query' : 'query',
             'mid'                   =>      $this->getMerchantId(),
             'timestamp'             =>      $this->getTimestamp(),
             'sign'                  =>      $this->getSign(),

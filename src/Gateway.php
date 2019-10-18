@@ -15,6 +15,7 @@ use Omnipay\TwoPayNow\Message\Request\CancelRequest;
 use Omnipay\TwoPayNow\Message\Request\CompleteRequest;
 use Omnipay\TwoPayNow\Message\Request\PreCreateRequest;
 use Omnipay\TwoPayNow\Message\Request\QueryRequest;
+use Omnipay\TwoPayNow\Message\Request\WapPreCreateRequest;
 
 class Gateway extends AbstractGateway
 {
@@ -199,6 +200,15 @@ class Gateway extends AbstractGateway
     }
 
     /**
+     * Is Wap Request
+     * @return bool
+     */
+    protected function isWap(): bool
+    {
+        return $this->getPlatform() === 'wap';
+    }
+
+    /**
      * Create Payment Request
      * @param array $parameters
      * @return \Omnipay\Common\Message\AbstractRequest
@@ -208,15 +218,15 @@ class Gateway extends AbstractGateway
         return $this->createRequest(PreCreateRequest::class, $parameters);
     }
 
-    ///*
-    // * Create Payment Request From Wap Devices
-    // * @param array $parameters
-    // * @return \Omnipay\Common\Message\AbstractRequest
-    // */
-    //public function wapPreCreate(array $parameters = [])
-    //{
-    //
-    //}
+    /*
+     * Create Payment Request From Wap Devices
+     * @param array $parameters
+     * @return \Omnipay\Common\Message\AbstractRequest
+     */
+    public function wapPreCreate(array $parameters = [])
+    {
+        return $this->createRequest(WapPreCreateRequest::class, $parameters);
+    }
 
     /**
      * Cancel Order

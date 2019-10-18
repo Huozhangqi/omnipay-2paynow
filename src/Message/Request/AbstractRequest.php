@@ -17,7 +17,6 @@ use Omnipay\Common\Message\ResponseInterface;
 
 abstract class AbstractRequest extends CommonAbstractRequest
 {
-
     /**
      * @return mixed
      */
@@ -167,11 +166,27 @@ abstract class AbstractRequest extends CommonAbstractRequest
         return $this->setParameter('platform', $value);
     }
 
+    /**
+     * Is Wap Request
+     * @return bool
+     */
+    protected function isWap(): bool
+    {
+        return $this->getPlatform() === 'wap';
+    }
+
+    /**
+     * @param $value
+     * @return AbstractRequest
+     */
     public function setMerchantTradeNo($value)
     {
         return $this->setParameter('merchantTradeNo', $value);
     }
 
+    /**
+     * @return mixed
+     */
     public function getMerchantTradeNo()
     {
         return $this->getParameter('merchantTradeNo');
@@ -187,8 +202,11 @@ abstract class AbstractRequest extends CommonAbstractRequest
 
         //wap端, 微信和支付宝
         if ($this->getPlatform() === 'wap' && $this->getType() === 1) {
-            //weChat
+            //Wap weChat
             return 'http://www.2paynow.com/wap/WxpayAPI/jsapi.php';
+        } elseif ($this->getPlatform() === 'wap' && $this->getType() === 0) {
+            //Wap AliPay
+            return 'http://2paynow.com/wap/wappay/pay.html';
         }
         //Web
         return 'https://www.2paynow.com/zhifu/mc_itf';
