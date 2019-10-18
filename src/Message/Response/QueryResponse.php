@@ -78,4 +78,10 @@ class QueryResponse extends AbstractResponse
     {
         return $this->data['currency'];
     }
+
+    public function getAmount()
+    {
+        return $this->data['amount'];
+    }
 }
+
