@@ -34,6 +34,11 @@ class QueryResponse extends AbstractResponse
         return $this->getTransStatus() === 'TRADE_CLOSED';
     }
 
+    public function isPending()
+    {
+        return $this->getTransStatus() === 'UNKNOWN';
+    }
+
     public function getTradeNo()
     {
         return $this->data['trade_no'];
