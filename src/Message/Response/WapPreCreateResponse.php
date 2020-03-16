@@ -10,8 +10,6 @@
 
 namespace Omnipay\TwoPayNow\Message\Response;
 
-use Omnipay\TwoPayNow\Message\Response\AbstractResponse;
-
 class WapPreCreateResponse extends AbstractResponse
 {
     public function isRedirect()

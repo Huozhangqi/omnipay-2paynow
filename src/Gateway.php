@@ -19,11 +19,11 @@ use Omnipay\TwoPayNow\Message\Request\WapPreCreateRequest;
 
 class Gateway extends AbstractGateway
 {
-
     /**
-     * Get gateway display name
+     * Get gateway display name.
      *
      * This can be used by carts to get the display name for each gateway.
+     *
      * @return string
      */
     public function getName()
@@ -34,10 +34,10 @@ class Gateway extends AbstractGateway
     public function getDefaultParameters()
     {
         return [
-            'timestamp' => intval(microtime(true)*1000),
+            'timestamp' => intval(microtime(true) * 1000),
             'timeout'   => '30m',
-            'type'  => [0, 1],
-            'platform' => ['web', 'wap']
+            'type'      => [0, 1],
+            'platform'  => ['web', 'wap'],
         ];
     }
 
@@ -61,6 +61,7 @@ class Gateway extends AbstractGateway
 
     /**
      * @param int $value
+     *
      * @return Gateway
      */
     public function setMerchantId(int $value)
@@ -117,7 +118,6 @@ class Gateway extends AbstractGateway
     {
         return $this->setParameter('amount', $value);
     }
-
 
     public function getPassBackParameters()
     {
@@ -200,7 +200,8 @@ class Gateway extends AbstractGateway
     }
 
     /**
-     * Is Wap Request
+     * Is Wap Request.
+     *
      * @return bool
      */
     protected function isWap(): bool
@@ -209,8 +210,10 @@ class Gateway extends AbstractGateway
     }
 
     /**
-     * Create Payment Request
+     * Create Payment Request.
+     *
      * @param array $parameters
+     *
      * @return \Omnipay\Common\Message\AbstractRequest
      */
     public function preCreate(array $parameters = [])
@@ -229,8 +232,10 @@ class Gateway extends AbstractGateway
     }
 
     /**
-     * Cancel Order
+     * Cancel Order.
+     *
      * @param array $parameters
+     *
      * @return \Omnipay\Common\Message\AbstractRequest
      */
     public function cancel(array $parameters = [])
@@ -239,8 +244,10 @@ class Gateway extends AbstractGateway
     }
 
     /**
-     * Query Payment Status
+     * Query Payment Status.
+     *
      * @param array $parameters
+     *
      * @return \Omnipay\Common\Message\AbstractRequest
      */
     public function query(array $parameters = [])
@@ -249,8 +256,10 @@ class Gateway extends AbstractGateway
     }
 
     /**
-     * Complete Payment Callback
+     * Complete Payment Callback.
+     *
      * @param array $parameters
+     *
      * @return \Omnipay\Common\Message\AbstractRequest
      */
     public function complete(array $parameters = [])

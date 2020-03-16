@@ -36,7 +36,7 @@ class CompleteRequest extends AbstractRequest
 
         $data['passback_parameters'] = json_decode($data['passback_parameters'], true);
 
-        $realSign = md5($data['function'] . $data['mid'] . $data['timestamp'] . $this->getKey());
+        $realSign = md5($data['function'].$data['mid'].$data['timestamp'].$this->getKey());
 
         if ($realSign !== $data['sign']) {
             throw new InvalidRequestException('sign check failed');
@@ -49,8 +49,9 @@ class CompleteRequest extends AbstractRequest
      * Get the raw data array for this message. The format of this varies from gateway to
      * gateway, but will usually be either an associative array, or a SimpleXMLElement.
      *
-     * @return mixed
      * @throws \Omnipay\Common\Exception\InvalidRequestException
+     *
+     * @return mixed
      */
     public function getData(): array
     {
@@ -78,7 +79,7 @@ class CompleteRequest extends AbstractRequest
 
         array_walk($params, function ($value) use ($data) {
             if (!in_array($value, array_keys($data))) {
-                throw new InvalidRequestException('bad request params'. $value);
+                throw new InvalidRequestException('bad request params'.$value);
             }
         });
 

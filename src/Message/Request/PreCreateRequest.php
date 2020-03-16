@@ -23,8 +23,9 @@ class PreCreateRequest extends AbstractRequest
      * Get the raw data array for this message. The format of this varies from gateway to
      * gateway, but will usually be either an associative array, or a SimpleXMLElement.
      *
-     * @return mixed
      * @throws \Omnipay\Common\Exception\InvalidRequestException
+     *
+     * @return mixed
      */
     public function getData()
     {
@@ -32,18 +33,18 @@ class PreCreateRequest extends AbstractRequest
 
         $this->validate('merchantId', 'sign', 'passBackParameters', 'type', 'subject', 'amount', 'currency', 'notifyUrl', 'timeout');
 
-        $data =  http_build_query([
-            'type'                  =>      $this->getType(),
-            'function'              =>      'precreate',
-            'mid'                   =>      $this->getMerchantId(),
-            'timestamp'             =>      $this->getTimestamp(),
-            'subject'               =>      $this->getSubject(),
-            'amount'                =>      $this->getAmount(),
-            'currency'              =>      $this->getCurrency(),
-            'notify_url'            =>      $this->getNotifyUrl(),
-            'it_b_pay'              =>      $this->getTimeout(),
-            'passback_parameters'   =>      $this->getPassBackParameters(),
-            'sign'                  =>      $this->getSign(),
+        $data = http_build_query([
+            'type'                  => $this->getType(),
+            'function'              => 'precreate',
+            'mid'                   => $this->getMerchantId(),
+            'timestamp'             => $this->getTimestamp(),
+            'subject'               => $this->getSubject(),
+            'amount'                => $this->getAmount(),
+            'currency'              => $this->getCurrency(),
+            'notify_url'            => $this->getNotifyUrl(),
+            'it_b_pay'              => $this->getTimeout(),
+            'passback_parameters'   => $this->getPassBackParameters(),
+            'sign'                  => $this->getSign(),
         ]);
 
         return $data;
