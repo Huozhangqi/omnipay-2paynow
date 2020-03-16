@@ -2,6 +2,7 @@
 
 <p align="center"> 2paynow driver for the Omnipay PHP payment processing library.</p>
 
+![StyleCI build status](https://github.styleci.io/repos/206535357/shield) 
 
 ## Installing
 
