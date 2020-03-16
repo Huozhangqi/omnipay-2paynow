@@ -11,7 +11,6 @@
 namespace Omnipay\TwoPayNow\Message\Request;
 
 use Omnipay\Common\Exception\InvalidRequestException;
-use Omnipay\Common\Exception\InvalidResponseException;
 use Omnipay\Common\Message\AbstractRequest as CommonAbstractRequest;
 use Omnipay\Common\Message\ResponseInterface;
 
@@ -27,6 +26,7 @@ abstract class AbstractRequest extends CommonAbstractRequest
 
     /**
      * @param int $value
+     *
      * @return AbstractRequest
      */
     public function setMerchantId(int $value)
@@ -105,17 +105,19 @@ abstract class AbstractRequest extends CommonAbstractRequest
     }
 
     /**
-     * Send the request with specified data
+     * Send the request with specified data.
      *
      * @param mixed $data The data to send
-     * @return ResponseInterface
+     *
      * @throws InvalidRequestException
+     *
+     * @return ResponseInterface
      */
     public function sendData($data)
     {
         $response = $this->httpClient->request(
             'GET',
-            $this->getEndpoint() . '?' . $this->getData()
+            $this->getEndpoint().'?'.$this->getData()
         );
 
         return $this->createResponse(json_decode($response->getBody()->getContents(), true));
@@ -153,7 +155,7 @@ abstract class AbstractRequest extends CommonAbstractRequest
 
     protected function makeSign($function)
     {
-        return $this->setSign(md5($function . $this->getMerchantId() . $this->getTimestamp() . $this->getKey()));
+        return $this->setSign(md5($function.$this->getMerchantId().$this->getTimestamp().$this->getKey()));
     }
 
     public function getPlatform()
@@ -167,7 +169,8 @@ abstract class AbstractRequest extends CommonAbstractRequest
     }
 
     /**
-     * Is Wap Request
+     * Is Wap Request.
+     *
      * @return bool
      */
     protected function isWap(): bool
@@ -177,6 +180,7 @@ abstract class AbstractRequest extends CommonAbstractRequest
 
     /**
      * @param $value
+     *
      * @return AbstractRequest
      */
     public function setMerchantTradeNo($value)
@@ -193,8 +197,9 @@ abstract class AbstractRequest extends CommonAbstractRequest
     }
 
     /**
-     * @return string
      * @throws InvalidRequestException
+     *
+     * @return string
      */
     public function getEndpoint()
     {

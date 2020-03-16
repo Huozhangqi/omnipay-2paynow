@@ -17,16 +17,16 @@ class AbstractResponse extends CommonAbstractRequest
     /**
      * Is the response successful?
      *
-     * @return boolean
+     * @return bool
      */
     public function isSuccessful()
     {
         return $this->data['status'] === 200 && isset($this->data['function']);
     }
 
-
     /**
-     * Get response data
+     * Get response data.
+     *
      * @return array
      */
     public function getData()
@@ -35,7 +35,8 @@ class AbstractResponse extends CommonAbstractRequest
     }
 
     /**
-     * Get returned code
+     * Get returned code.
+     *
      * @return int
      */
     public function getCode()
@@ -43,9 +44,9 @@ class AbstractResponse extends CommonAbstractRequest
         return $this->data['status'];
     }
 
-
     /**
-     * Get error code when status in error
+     * Get error code when status in error.
+     *
      * @return int|null
      */
     public function getErrorCode()
@@ -54,7 +55,8 @@ class AbstractResponse extends CommonAbstractRequest
     }
 
     /**
-     * Get error info when status in error
+     * Get error info when status in error.
+     *
      * @return string|null
      */
     public function getErrorInfo()

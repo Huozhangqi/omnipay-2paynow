@@ -10,8 +10,6 @@
 
 namespace Omnipay\TwoPayNow\Message\Response;
 
-use Omnipay\TwoPayNow\Message\Response\AbstractResponse;
-
 class QueryResponse extends AbstractResponse
 {
     public function isRefunded()
@@ -89,4 +87,3 @@ class QueryResponse extends AbstractResponse
         return $this->data['amount'];
     }
 }
-

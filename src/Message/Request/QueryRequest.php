@@ -23,8 +23,9 @@ class QueryRequest extends AbstractRequest
      * Get the raw data array for this message. The format of this varies from gateway to
      * gateway, but will usually be either an associative array, or a SimpleXMLElement.
      *
-     * @return mixed
      * @throws \Omnipay\Common\Exception\InvalidRequestException
+     *
+     * @return mixed
      */
     public function getData()
     {
@@ -34,12 +35,12 @@ class QueryRequest extends AbstractRequest
 
         $this->validate('merchantId', 'sign', 'tradeNo', 'key');
 
-        $data =  http_build_query([
-            'function'              =>      $this->isWap() ? 'wap_query' : 'query',
-            'mid'                   =>      $this->getMerchantId(),
-            'timestamp'             =>      $this->getTimestamp(),
-            'sign'                  =>      $this->getSign(),
-            'trade_no'              =>      $this->getTradeNo(),
+        $data = http_build_query([
+            'function'              => $this->isWap() ? 'wap_query' : 'query',
+            'mid'                   => $this->getMerchantId(),
+            'timestamp'             => $this->getTimestamp(),
+            'sign'                  => $this->getSign(),
+            'trade_no'              => $this->getTradeNo(),
         ]);
 
         return $data;

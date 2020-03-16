@@ -17,7 +17,7 @@ use PHPUnit\Framework\TestCase;
 class TwoPayNowTest extends TestCase
 {
     /**
-     * @var \Omnipay\TwoPayNow\Gateway $gateway
+     * @var \Omnipay\TwoPayNow\Gateway
      */
     protected $gateway;
 
@@ -28,9 +28,6 @@ class TwoPayNowTest extends TestCase
         $this->gateway = Omnipay::create('TwoPayNow');
     }
 
-    /**
-     *
-     */
     public function testWebPreCreate(): void
     {
         $this->gateway->setPlatform('web');
@@ -51,9 +48,6 @@ class TwoPayNowTest extends TestCase
         $this->assertSame('mid not exist', $response->getErrorInfo());
     }
 
-    /**
-     *
-     */
     public function testCancel(): void
     {
         $this->gateway->setPlatform('web');
@@ -113,7 +107,7 @@ class TwoPayNowTest extends TestCase
         parse_str('sign=4f83e30f527ff4ed0fc9c03185f43f97&timestamp=1571034662245&trade_no=A19101413542297869&merchant_trade_no=&amount_cny=0.08&function=precreate&currency=EUR&trade_status=TRADE_SUCCESS&mid=4002563369&passback_parameters={"serial_number":"16223658963","vip_id":904425,"is_wap":0}&amount=0.01', $data);
 
         return [
-            [$data]
+            [$data],
         ];
     }
 }

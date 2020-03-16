@@ -10,8 +10,6 @@
 
 namespace Omnipay\TwoPayNow\Message\Response;
 
-use Omnipay\TwoPayNow\Message\Response\AbstractResponse;
-
 class CompleteResponse extends AbstractResponse
 {
     public function isSuccessful()
